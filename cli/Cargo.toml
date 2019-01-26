@@ -1,0 +1,11 @@
+[package]
+name = "cli"
+version = "0.1.0"
+authors = ["Ferdia McKeogh <ferdia@mckeogh.tech>"]
+edition = "2018"
+
+[dependencies]
+serialport = "3.2.0"
+embedded-hal = "0.2.2"
+vesc-comm = { path = "/Users/ferdiamckeogh/Downloads/vesc-comm" }
+nb = "0.1.1"
