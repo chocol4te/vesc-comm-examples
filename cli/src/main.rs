@@ -3,13 +3,13 @@ use serialport::prelude::*;
 use vesc_comm::VescConnection;
 
 fn main() {
-    let port = {
+    let (port1, port2) = {
         let mut port = serialport::open("/dev/tty.usbmodem3011").unwrap();
         port.set_baud_rate(115200).unwrap();
-        Port::new(port)
+        (Port::new(port.try_clone().unwrap()), Port::new(port))
     };
 
-    let mut conn = VescConnection::new(port);
+    let mut conn = VescConnection::new(port1, port2);
 
     dbg!(conn.get_fw_version());
     dbg!(conn.get_values());
